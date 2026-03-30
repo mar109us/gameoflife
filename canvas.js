@@ -10,7 +10,19 @@ function one_box() {
     ctx.fillRect(box_size, box_size, box_pos_x, box_pos_y)
 }
 
+let grid_size_x = 5
+let grid_size_y = 5
 
+let grid_x = []
+
+grid_x.length = grid_size_x
+
+
+
+grid_x.forEach(element => {
+    one_box()
+});
+console.log(grid_x)
 
 function canvas_render() {
 
@@ -18,12 +30,6 @@ function canvas_render() {
     canvas.style.top = `${g.min_height}px`
     canvas.width = g.max_width
     canvas.height = g.max_height
-
-    one_box()
-
-
-
-
 
 }
 
