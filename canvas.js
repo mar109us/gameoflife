@@ -1,6 +1,13 @@
 const canvas = document.getElementById("canvas")
 const ctx = canvas.getContext("2d")
 
+function one_box() {
+    ctx.fillStyle = "black"
+    ctx.fillRect(50, 50, 50, 50)
+}
+
+
+
 function canvas_render() {
 
     canvas.style.left = `${g.min_width}px`
@@ -8,8 +15,11 @@ function canvas_render() {
     canvas.width = g.max_width
     canvas.height = g.max_height
 
-    ctx.fillStyle = "black"
-    ctx.fillRect(50, 50, 50, 50)
+    one_box()
+
+
+
+
 
 }
 
