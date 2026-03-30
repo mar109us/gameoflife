@@ -1,9 +1,13 @@
 const canvas = document.getElementById("canvas")
 const ctx = canvas.getContext("2d")
 
+let box_size = 50
+let box_pos_x = 50
+let box_pos_y = 50
+
 function one_box() {
     ctx.fillStyle = "black"
-    ctx.fillRect(50, 50, 50, 50)
+    ctx.fillRect(box_size, box_size, box_pos_x, box_pos_y)
 }
 
 
