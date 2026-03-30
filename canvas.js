@@ -15,7 +15,7 @@ let margin = 1
 let box_margin_x = box_size + margin
 let box_margin_y = box_size + margin
 
-let grid_size_x = 50
+let grid_size_x = 1000
 
 
 
@@ -38,7 +38,8 @@ function canvas_render() {
         let current_x = box_pos_x + (index_per_line * box_margin_x)
         
         if (current_collums < max_collums) {
-        ctx.fillStyle = "black"
+        ctx.fillStyle='rgb(78, 89, 83)'
+        
         ctx.fillRect(current_x, current_y, box_size, box_size)
         index_per_line += 1
         }
