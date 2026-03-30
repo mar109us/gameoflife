@@ -1,35 +1,42 @@
 const canvas = document.getElementById("canvas")
 const ctx = canvas.getContext("2d")
 
-let box_size = 50
+canvas.style.left = `${g.min_width}px`
+canvas.style.top = `${g.min_height}px`
+canvas.width = g.max_width
+canvas.height = g.max_height
+
+let box_size = 20
 let box_pos_x = 50
 let box_pos_y = 50
 
-function one_box() {
-    ctx.fillStyle = "black"
-    ctx.fillRect(box_size, box_size, box_pos_x, box_pos_y)
-}
+let margin = 2
 
-let grid_size_x = 5
-let grid_size_y = 5
+let box_margin = box_size + margin
 
-let grid_x = []
-
-grid_x.length = grid_size_x
+let grid_size_x = 50
 
 
 
-grid_x.forEach(element => {
-    one_box()
-});
-console.log(grid_x)
+let box = 0
+
+let grid_x = Array.from({length: grid_size_x}, () => {
+    return {...box}
+})
+
 
 function canvas_render() {
+    grid_x.forEach((box, index) => {
 
-    canvas.style.left = `${g.min_width}px`
-    canvas.style.top = `${g.min_height}px`
-    canvas.width = g.max_width
-    canvas.height = g.max_height
+
+
+        let current_x = box_pos_x + (index * box_margin)
+        ctx.fillStyle = "black"
+        ctx.fillRect(current_x, box_pos_y, box_size, box_size)
+    })
+
+
+
 
 }
 
