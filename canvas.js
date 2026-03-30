@@ -15,7 +15,7 @@ let margin = 1
 let box_margin_x = box_size + margin
 let box_margin_y = box_size + margin
 
-let grid_size_x = 1000
+let grid_size_x = 1
 
 
 
@@ -26,18 +26,26 @@ let grid_x = Array.from({length: grid_size_x}, () => {
 })
 
 
-let max_rows = 40
+
 let current_y = box_margin_y
 let index_per_line = 0
-let max_collums = 40
+
+let max_column = 10
+let max_row = 10
 let current_collums = 0
+
+
+
+let gridpos_x = 0
+let gridpos_y = 0
+
 
 function canvas_render() {
     grid_x.forEach((box, index) => {
 
         let current_x = box_pos_x + (index_per_line * box_margin_x)
         
-        if (current_collums < max_collums) {
+        if (current_collums < max_column) {
         ctx.fillStyle='rgb(78, 89, 83)'
         
         ctx.fillRect(current_x, current_y, box_size, box_size)
@@ -45,8 +53,16 @@ function canvas_render() {
         }
 
 
+        if (gridpos_x === 6) 
+            {box.ctx.fillStyle='rgb(39, 46, 44)'
+                box.ctx.fillRect(current_x, current_y, box_size, box_size)
+            }
+        
 
-        if (index_per_line == max_rows && current_collums <= max_collums) {
+
+
+
+        if (index_per_line == max_row) {
             index_per_line = 0
             current_collums += 1
             current_y += box_margin_y
@@ -57,14 +73,7 @@ function canvas_render() {
 
 
 
-        
-        
-
-
-
     })
-
-        console.log(index_per_line)
 
 
 }
