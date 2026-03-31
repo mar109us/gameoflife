@@ -23,9 +23,9 @@ let box = 0
     return {...box}
 }) */
 
-let grid_x = Array.from({length: grid_size_x}, () => {
+/* let grid_x = Array.from({length: grid_size_x}, () => {
     return {...box}
-})
+}) */
 
 let current_y = box_margin_y
 let index_per_line = 0
@@ -37,17 +37,26 @@ let current_collums = 0
 let gridpos_x = 0
 let gridpos_y = 0
 
+let array_pos = 0
+
+grid_x = []
+
+grid_x.length = max_column * max_row
+
+
+
 function canvas_render() {
-    grid_x.forEach((box) => {
 
         let current_x = box_pos_x + (index_per_line * box_margin_x)
         
-
-        if (index_per_line == 5)  {
+        if (index_per_line == 0)  {
             ctx.fillStyle='rgb(78, 89, 83)'
         }
-        if (box > 10) {
+        if (index_per_line >= 5) {
             ctx.fillStyle='rgb(39, 46, 44)'
+        }
+        if (array_pos === 1) {
+            ctx.fillStyle='rgb(204, 191, 44)'
         }
 
         if (current_collums < max_column) {
@@ -60,9 +69,49 @@ function canvas_render() {
             current_collums += 1
             current_y += box_margin_y
             current_x = box_margin_x
+            
         }
+
+        array_pos += 1
+
+}
+
+
+
+/* function canvas_render() {
+    grid_x.forEach((box) => {
+
+        let current_x = box_pos_x + (index_per_line * box_margin_x)
+        
+        if (index_per_line == 0)  {
+            ctx.fillStyle='rgb(78, 89, 83)'
+        }
+        if (index_per_line >= 5) {
+            ctx.fillStyle='rgb(39, 46, 44)'
+        }
+        if (array_pos === 1) {
+            ctx.fillStyle='rgb(204, 191, 44)'
+        }
+
+        if (current_collums < max_column) {
+        ctx.fillRect(current_x, current_y, box_size, box_size)
+        index_per_line += 1
+        }
+
+        if (index_per_line == max_row) {
+            index_per_line = 0
+            current_collums += 1
+            current_y += box_margin_y
+            current_x = box_margin_x
+            
+        }
+
+        array_pos += 1
+
 
     })
 
-}
+} */
+
+
 
