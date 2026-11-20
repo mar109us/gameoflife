@@ -5,12 +5,47 @@
 
 using System.Text;
 
+// MAKE ARRAY FROM WIDTH/HEIGHT AS I NEED TO CHECK DEAD CELLS AS WELL
+// MAKE ARRAY FROM WIDTH/HEIGHT AS I NEED TO CHECK DEAD CELLS AS WELL
+// MAKE ARRAY FROM WIDTH/HEIGHT AS I NEED TO CHECK DEAD CELLS AS WELL
 
+// LIST LIST LIST
 class Program {
     static void Main(string[] args) {
         Console.CursorVisible = false;
 
-        int[][] dot = [[5, 5], [6, 5]];
+        
+        DrawScreen();
+    }
+
+    private static void DrawScreen() {
+        while (true) {
+            var dot = makeList();
+            var width = Width();
+            var height = Height();
+            var screen = new StringBuilder();
+            for (var i = 0; i < height; i++) {
+                for (var j = 0; j < width; j++) {
+                    foreach (var pos in dot) {
+                        if (pos[0] == i && pos[1] == j) {
+                            screen.Append("█");
+                        }
+                    }
+                    screen.Append(" ");
+                }
+            }
+            FrameLoop(screen);
+        }
+    }
+
+    private static void FrameLoop(StringBuilder screen) {
+        Console.Write(screen.ToString());
+        Thread.Sleep(500);
+        Console.SetCursorPosition(0, 0);
+    }
+
+    private static List<int[]> makeList() {
+        List<int[]> dot = [[5, 5], [6, 5]];
         foreach (var mainDot in dot) {
             foreach (var restDots in dot) {
                 if (mainDot != restDots) {
@@ -43,29 +78,17 @@ class Program {
                 }
             }
         }
-        // DrawScreen(dot);
+
+        return dot;
     }
 
-    private static void DrawScreen(int[][] dot) {
-        while (true) {
-            var width = Console.WindowWidth;
-            var height = Console.WindowHeight;
-            var screen = new StringBuilder();
-            for (var i = 0; i < height; i++) {
-                for (var j = 0; j < width; j++) {
-                    foreach (var pos in dot) {
-                        if (pos[0] == i && pos[1] == j) {
-                            screen.Append("█");
-                        }
-                    }
+    private static int Height() {
+        var height = Console.WindowHeight;
+        return height;
+    }
 
-                    screen.Append(" ");
-                }
-            }
-
-            Console.Write(screen.ToString());
-            Thread.Sleep(500);
-            Console.SetCursorPosition(0, 0);
-        }
+    private static int Width() {
+        var width = Console.WindowWidth;
+        return width;
     }
 }
