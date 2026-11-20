@@ -5,27 +5,36 @@
 
 using System.Text;
 
-int[][] dot = [[1, 1], [5, 5], [8, 3], [9, 5]];
 
-Console.CursorVisible = false;
+class Program {
+    static void Main(string[] args) {
+        Console.CursorVisible = false;
 
-while (true) {
-    var width = Console.WindowWidth;
-    var height = Console.WindowHeight;
-    var screen = new StringBuilder();
-    for (var i = 0; i < height; i++) {
-        for (var j = 0; j < width; j++) {
-            foreach (var pos in dot) {
-                if (pos[0] == i && pos[1] == j) {
-                    screen.Append("█");
-                }
-            }
-            screen.Append(" "); 
-        }
+        int[][] dot = [[1, 1], [5, 5], [8, 3], [9, 5]];
+        DrawScreen(dot);
+        
     }
 
-    Console.Write(screen.ToString());
+    private static void DrawScreen(int[][] dot) {
+        while (true) {
+            var width = Console.WindowWidth;
+            var height = Console.WindowHeight;
+            var screen = new StringBuilder();
+            for (var i = 0; i < height; i++) {
+                for (var j = 0; j < width; j++) {
+                    foreach (var pos in dot) {
+                        if (pos[0] == i && pos[1] == j) {
+                            screen.Append("█");
+                        }
+                    }
 
-    Thread.Sleep(500);
-    Console.SetCursorPosition(0, 0);
+                    screen.Append(" ");
+                }
+            }
+
+            Console.Write(screen.ToString());
+            Thread.Sleep(500);
+            Console.SetCursorPosition(0, 0);
+        }
+    }
 }
