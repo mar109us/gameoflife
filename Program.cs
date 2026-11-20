@@ -5,28 +5,27 @@
 
 using System.Text;
 
-int[][] dot = [[5, 5]];
+int[][] dot = [[1, 1], [5, 5], [8, 3], [9, 5]];
 
 Console.CursorVisible = false;
-Console.Clear();
 
 while (true) {
     var width = Console.WindowWidth;
     var height = Console.WindowHeight;
     var screen = new StringBuilder();
-    for (var i = 0; i < height - 1; i++) {
+    for (var i = 0; i < height; i++) {
         for (var j = 0; j < width; j++) {
-            if (dot[i][j] == j && dot[0][] == i) {
-                screen.Append("█");
+            foreach (var pos in dot) {
+                if (pos[0] == i && pos[1] == j) {
+                    screen.Append("█");
+                }
             }
-            else {
-                screen.Append(" ");
-            }
+            screen.Append(" "); 
         }
     }
 
-    Console.SetCursorPosition(0, 0);
     Console.Write(screen.ToString());
 
-    Thread.Sleep(16);
+    Thread.Sleep(500);
+    Console.SetCursorPosition(0, 0);
 }
